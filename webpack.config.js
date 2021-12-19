@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,7 +9,12 @@ module.exports = {
       title: 'Your first THREE.js app',
       favicon: './src/logo.png'
     }),
-  ],
+      new CopyWebpackPlugin({
+        patterns: [
+          {from: 'public', to: 'inner'}
+            ]
+      }),
+],
   module: {
     rules: [
       {
